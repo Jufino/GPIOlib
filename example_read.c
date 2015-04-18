@@ -1,14 +1,50 @@
-#include <stdio.h>
-#include "gpio.h"
-
-int main(void)
-{
-	gpio_open(157,0);
-
-	while (1) {
-		printf("%d\n", gpio_read(157));
-	}
-
-	gpio_close(157);
-}
-
+root:*::
+daemon:*::
+bin:*::
+sys:*::
+adm:*::syslog,bananapi
+tty:*::
+disk:*::
+lp:*::
+mail:*::
+news:*::
+uucp:*::
+man:*::
+proxy:*::
+kmem:*::
+dialout:*::bananapi
+fax:*::bananapi
+voice:*::
+cdrom:*::bananapi
+floppy:*::bananapi
+tape:*::bananapi
+sudo:*::
+audio:*::bananapi
+dip:*::bananapi
+www-data:*::
+backup:*::
+operator:*::
+list:*::
+irc:*::
+src:*::
+gnats:*::
+shadow:*::
+utmp:*::
+video:*::bananapi
+sasl:*::
+plugdev:*::bananapi
+staff:*::
+games:*::
+users:*::
+nogroup:*::
+libuuid:!::
+netdev:!::bananapi
+crontab:!::
+syslog:!::
+fuse:!::bananapi
+messagebus:!::
+ssl-cert:!::
+scanner:!::bananapi
+ntp:!::
+mlocate:!::
+ssh:!

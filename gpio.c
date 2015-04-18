@@ -1,5 +1,5 @@
 #include "gpio.h"
-void gpio_open(int port, int DDR)
+void gpio_open(unsigned char port, unsigned char DDR)
 {
 	FILE *f;
 	f = fopen("/sys/class/gpio/export", "w");
@@ -7,14 +7,24 @@ void gpio_open(int port, int DDR)
 	fclose(f);
 
 	char file[128];
-	sprintf(file, "/sys/class/gpio/gpio%d/direction", port);
-	f = fopen(file, "w");
-	if (DDR == 0)	fprintf(f, "in\n");
-	else		fprintf(f, "out\n");
-	fclose(f);
+        sprintf(file, "/sys/class/gpio/gpio%d/direction", port);
+        f = fopen(file, "w");
+        if (DDR == 0)   fprintf(f, "in\n");
+        else            fprintf(f, "out\n");
+        fclose(f);
 }
 
-void gpio_close(int port)
+void gpio_dir(unsigned char port, unsigned char DDR){
+	FILE *f;
+        char file[128];
+        sprintf(file, "/sys/class/gpio/gpio%d/direction", port);
+        f = fopen(file, "w");
+        if (DDR == 0)   fprintf(f, "in\n");
+        else            fprintf(f, "out\n");
+        fclose(f);
+}
+
+void gpio_close(unsigned char port)
 {
 	FILE *f;
 	f = fopen("/sys/class/gpio/unexport", "w");
@@ -22,7 +32,7 @@ void gpio_close(int port)
 	fclose(f);
 }
 
-int gpio_read(int port)
+int gpio_read(unsigned char port)
 {
 	FILE *f;
 	
@@ -36,7 +46,7 @@ int gpio_read(int port)
 	return i;
 
 }
-void gpio_write(int port, int value){
+void gpio_write(unsigned char port, unsigned char value){
 	FILE *f;
 
 	char file[128];

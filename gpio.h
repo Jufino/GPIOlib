@@ -4,10 +4,11 @@
 #include <stdio.h>
 
 
-void gpio_open(int port, int DDR);
-void gpio_close(int port);
-int gpio_read(int port);
-void gpio_write(int port,int value);
+void gpio_open(unsigned char port, unsigned char DDR);
+void gpio_dir(unsigned char  port, unsigned char DDR);
+void gpio_close(unsigned char port);
+int gpio_read(unsigned char port);
+void gpio_write(unsigned char port,unsigned char value);
 
 #endif
 
